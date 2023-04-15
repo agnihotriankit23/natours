@@ -29,6 +29,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 //To use axios
 app.use(cors());
+
+app.options('*', cors());
 //Serving Static Files, it will give files like css and img from public folder to base.pug
 app.use(express.static(path.join(__dirname, 'public')));
 //Set Security HTTP headers
