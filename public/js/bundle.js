@@ -12215,35 +12215,34 @@ var signup = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          console.log(data);
-          _context.next = 4;
+          _context.next = 3;
           return (0, _axios.default)({
             method: 'POST',
             url: '/api/v1/users/signup',
             data: data
           });
-        case 4:
+        case 3:
           res = _context.sent;
           if (res.data.status === 'success') {
             (0, _alert.showAlert)('success', 'Sign Up  succesfully');
             window.setTimeout(function () {
-              location.assign('/login');
+              location.assign('/');
             }, 1500);
           }
-          _context.next = 12;
+          _context.next = 11;
           break;
-        case 8:
-          _context.prev = 8;
+        case 7:
+          _context.prev = 7;
           _context.t0 = _context["catch"](0);
           (0, _alert.showAlert)('error', _context.t0.response.data.message);
           window.setTimeout(function () {
             location.reload();
           }, 1500);
-        case 12:
+        case 11:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee, null, [[0, 7]]);
   }));
   return function signup(_x) {
     return _ref.apply(this, arguments);
@@ -12395,7 +12394,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //DOM Elements
 var mapBox = document.getElementById('map');
 var loginForm = document.querySelector('.form--login');
-var signForm = document.querySelector('.signup-form');
+var signUpForm = document.querySelector('.signup-form');
 var logOutBtn = document.querySelector('.nav__el--logout');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
@@ -12406,33 +12405,18 @@ if (mapBox) {
   var locations = JSON.parse(mapBox.dataset.locations);
   (0, _mapBox.displayMap)(locations);
 }
-if (signForm) signForm.addEventListener('submit', /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-    var data;
-    return _regeneratorRuntime().wrap(function _callee$(_context) {
-      while (1) switch (_context.prev = _context.next) {
-        case 0:
-          e.preventDefault();
-          document.querySelector('.btn--signup').textContent = 'Creating...';
-          data = {};
-          data.name = document.getElementById('name').value;
-          data.email = document.getElementById('email').value;
-          data.password = document.getElementById('password').value;
-          data.passwordConfirm = document.getElementById('passwordConfirm').value;
-          _context.next = 9;
-          return (0, _signUp.signup)(data);
-        case 9:
-          document.querySelector('.btn--signup').textContent = 'Sign Up.';
-        case 10:
-        case "end":
-          return _context.stop();
-      }
-    }, _callee);
-  }));
-  return function (_x) {
-    return _ref.apply(this, arguments);
-  };
-}());
+if (signUpForm) signUpForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  document.querySelector('.btn--signup').textContent = 'Creating...';
+  var data = {};
+  data.name = document.getElementById('name').value;
+  data.email = document.getElementById('email').value;
+  data.password = document.getElementById('password').value;
+  data.passwordConfirm = document.getElementById('passwordConfirm').value;
+  (0, _signUp.signup)(data);
+  //document.querySelector('.btn--signup').textContent = 'Sign Up.';
+});
+
 if (loginForm) {
   loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -12451,17 +12435,17 @@ if (userDataForm) userDataForm.addEventListener('submit', function (e) {
   (0, _updateSettings.updateSettings)(form, 'data');
 });
 if (userPasswordForm) userPasswordForm.addEventListener('submit', /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
     var passwordCurrent, password, passwordConfirm;
-    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-      while (1) switch (_context2.prev = _context2.next) {
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
         case 0:
           e.preventDefault();
           document.querySelector('.btn--save-password').textContent = 'Updating...';
           passwordCurrent = document.getElementById('password-current').value;
           password = document.getElementById('password').value;
           passwordConfirm = document.getElementById('password-confirm').value; //console.log(passwordCurrent, password, passwordConfirm);
-          _context2.next = 7;
+          _context.next = 7;
           return (0, _updateSettings.updateSettings)({
             passwordCurrent: passwordCurrent,
             password: password,
@@ -12474,12 +12458,12 @@ if (userPasswordForm) userPasswordForm.addEventListener('submit', /*#__PURE__*/f
           document.getElementById('password-confirm').value = '';
         case 11:
         case "end":
-          return _context2.stop();
+          return _context.stop();
       }
-    }, _callee2);
+    }, _callee);
   }));
-  return function (_x2) {
-    return _ref2.apply(this, arguments);
+  return function (_x) {
+    return _ref.apply(this, arguments);
   };
 }());
 if (bookBtn) bookBtn.addEventListener('click', function (e) {

@@ -9,7 +9,7 @@ import { signup } from './signUp';
 //DOM Elements
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
-const signForm = document.querySelector('.signup-form');
+const signUpForm = document.querySelector('.signup-form');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
@@ -21,8 +21,8 @@ if (mapBox) {
   displayMap(locations);
 }
 
-if (signForm)
-  signForm.addEventListener('submit', async (e) => {
+if (signUpForm)
+  signUpForm.addEventListener('submit', (e) => {
     e.preventDefault();
     document.querySelector('.btn--signup').textContent = 'Creating...';
     const data = {};
@@ -31,8 +31,8 @@ if (signForm)
     data.password = document.getElementById('password').value;
     data.passwordConfirm = document.getElementById('passwordConfirm').value;
 
-    await signup(data);
-    document.querySelector('.btn--signup').textContent = 'Sign Up.';
+    signup(data);
+    //document.querySelector('.btn--signup').textContent = 'Sign Up.';
   });
 
 if (loginForm) {
