@@ -21,6 +21,9 @@ export const login = async (email, password) => {
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
+    window.setTimeout(() => {
+      location.assign('/login');
+    }, 1500);
   }
 };
 
@@ -31,7 +34,7 @@ export const logout = async () => {
       url: '/api/v1/users/logout',
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'Logged in successfully!');
+      showAlert('success', 'Logged out successfully!');
       window.setTimeout(() => {
         location.assign('/');
       }, 1500);
