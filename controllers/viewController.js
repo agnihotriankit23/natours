@@ -29,7 +29,7 @@ exports.getTour = catchAsync(async (req, res, next) => {
     path: 'reviews',
     fields: 'review user rating',
   });
-  console.log(tour.imageCover);
+  //console.log(tour.imageCover);
 
   if (!tour) {
     return next(new AppError('There is no Tour with that name !', 404));

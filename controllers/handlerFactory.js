@@ -54,7 +54,7 @@ exports.getOne = (Model, popOptions) =>
     if (popOptions) query = query.populate(popOptions);
 
     const doc = await query;
-    console.log(doc);
+    //console.log(doc);
     //const doc = Model.findOne({ _id: req.params.id });
 
     if (!doc) {
